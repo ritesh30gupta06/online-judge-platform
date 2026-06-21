@@ -35,21 +35,35 @@ A full-stack coding platform built using React.js, Node.js, Express.js, MySQL, a
 
 ## Screenshots
 
-(Add screenshots here)
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Problems Page
+
+![Problems](screenshots/problems.png)
+
+### Problem Details
+
+![Problem Details](screenshots/problem-details.png)
+
+### Submit Solution
+
+![Submit Solution](screenshots/submit-solution.png)
+
+### Submission History
+
+![Submissions](screenshots/submissions.png)
 
 ## Run Locally
 
 ### Backend
 
-```bash
 npm install
 npm run dev
-```
 
 ### Frontend
 
-```bash
 cd frontend
 npm install
 npm run dev
-```
