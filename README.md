@@ -59,11 +59,15 @@ A full-stack coding platform built using React.js, Node.js, Express.js, MySQL, a
 
 ### Backend
 
+```bash
 npm install
 npm run dev
+```
 
 ### Frontend
 
+```bash
 cd frontend
 npm install
 npm run dev
+```
