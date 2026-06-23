@@ -14,8 +14,16 @@ function Submissions() {
 
     try {
 
-      const res =
-        await API.get("/submissions");
+      const token = localStorage.getItem("token");
+
+      const res = await API.get(
+        "/submissions",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
 
       setSubmissions(res.data);
 
@@ -56,21 +64,33 @@ function Submissions() {
 
           <tbody>
 
-            {submissions.map((s) => (
+            {submissions.length > 0 ? (
 
-              <tr key={s.id}>
+              submissions.map((s) => (
 
-                <td>{s.id}</td>
+                <tr key={s.id}>
 
-                <td>{s.problem_id}</td>
+                  <td>{s.id}</td>
 
-                <td>{s.language}</td>
+                  <td>{s.problem_id}</td>
 
-                <td>{s.verdict}</td>
+                  <td>{s.language}</td>
 
+                  <td>{s.verdict}</td>
+
+                </tr>
+
+              ))
+
+            ) : (
+
+              <tr>
+                <td colSpan="4">
+                  No submissions found
+                </td>
               </tr>
 
-            ))}
+            )}
 
           </tbody>
 
