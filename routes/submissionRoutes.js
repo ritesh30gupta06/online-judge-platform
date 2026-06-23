@@ -18,7 +18,8 @@ router.post(
 
 router.get(
     "/",
+    verifyToken,
     getAllSubmissions
 );
- 
+
 module.exports = router;

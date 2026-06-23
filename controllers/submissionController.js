@@ -6,7 +6,6 @@ const submitSolution = (req, res) => {
 
     const user_id = req.user.id;
 
-    // Temporary verdict logic
     let verdict = "Wrong Answer";
 
     if (code.includes("return 0")) {
@@ -54,24 +53,30 @@ const submitSolution = (req, res) => {
 
 const getAllSubmissions = (req, res) => {
 
+    const user_id = req.user.id;
+
     const sql = `
         SELECT *
         FROM submissions
+        WHERE user_id = ?
         ORDER BY submitted_at DESC
     `;
 
-    db.query(sql, (err, result) => {
+    db.query(
+        sql,
+        [user_id],
+        (err, result) => {
 
-        if (err) {
-            return res.status(500).json({
-                message: "Database Error"
-            });
+            if (err) {
+                return res.status(500).json({
+                    message: "Database Error"
+                });
+            }
+
+            return res.status(200).json(result);
+
         }
-
-        return res.status(200).json(result);
-
-    });
-
+    );
 };
 
 module.exports = {
