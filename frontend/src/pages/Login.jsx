@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -19,23 +21,37 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await API.post("/auth/login", form);
+      const res = await API.post(
+        "/auth/login",
+        form
+      );
 
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem(
+        "token",
+        res.data.token
+      );
 
       alert("Login Successful");
 
-      window.location.href = "/problems";
+      navigate("/problems");
+
     } catch (err) {
-      alert(err.response?.data?.message || "Login Failed");
+
+      alert(
+        err.response?.data?.message ||
+        "Login Failed"
+      );
+
     }
   };
 
   return (
     <div className="auth-card">
-      <h1>Online Judge Login</h1>
+
+      <h1>Login</h1>
 
       <form onSubmit={handleSubmit}>
+
         <input
           type="email"
           name="email"
@@ -56,9 +72,13 @@ function Login() {
 
         <br /><br />
 
-        <button className="btn" type="submit">
+        <button
+          className="btn"
+          type="submit"
+        >
           Login
         </button>
+
       </form>
 
       <br />
@@ -66,6 +86,7 @@ function Login() {
       <Link to="/register">
         New User? Register
       </Link>
+
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    username: "",
+    name: "",
     email: "",
     password: ""
   });
@@ -42,8 +42,8 @@ function Register() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="username"
-          placeholder="Username"
+          name="name"
+          placeholder="Name"
           onChange={handleChange}
           required
         />
@@ -70,7 +70,10 @@ function Register() {
 
         <br /><br />
 
-        <button className="btn" type="submit">
+        <button
+          className="btn"
+          type="submit"
+        >
           Register
         </button>
       </form>
