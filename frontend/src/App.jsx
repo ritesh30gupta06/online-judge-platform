@@ -6,16 +6,49 @@ import Problems from "./pages/Problems";
 import ProblemDetails from "./pages/ProblemDetails";
 import SubmitSolution from "./pages/SubmitSolution";
 import Submissions from "./pages/Submissions";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/problems" element={<Problems />} />
-      <Route path="/problems/:id" element={<ProblemDetails />} />
-      <Route path="/submit/:id" element={<SubmitSolution />} />
-      <Route path="/submissions" element={<Submissions />} />
+
+      <Route
+        path="/problems"
+        element={
+          <ProtectedRoute>
+            <Problems />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/problems/:id"
+        element={
+          <ProtectedRoute>
+            <ProblemDetails />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/submit/:id"
+        element={
+          <ProtectedRoute>
+            <SubmitSolution />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/submissions"
+        element={
+          <ProtectedRoute>
+            <Submissions />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }

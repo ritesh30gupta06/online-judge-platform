@@ -97,3 +97,53 @@ pre{
   padding:15px;
   border-radius:10px;
 }
+.search-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.problem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.difficulty-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+}
+
+.difficulty-badge.easy {
+  background-color: #28a745;
+}
+
+.difficulty-badge.medium {
+  background-color: #f0ad4e;
+}
+
+.difficulty-badge.hard {
+  background-color: #dc3545;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  opacity: 0.9;
+}

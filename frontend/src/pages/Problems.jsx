@@ -4,29 +4,37 @@ import API from "../services/api";
 import Navbar from "../components/Navbar";
 
 function Problems() {
-
   const [problems, setProblems] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetchProblems();
   }, []);
 
   const fetchProblems = async () => {
-
     try {
-
       const res = await API.get("/problems");
-
       setProblems(res.data);
-
     } catch (err) {
-
       console.log(err);
-
       alert("Failed To Fetch Problems");
-
     }
+  };
 
+  const filteredProblems = problems.filter((problem) =>
+    problem.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const getDifficultyClass = (difficulty) => {
+    if (!difficulty) return "difficulty-badge";
+
+    const d = difficulty.toLowerCase();
+
+    if (d === "easy") return "difficulty-badge easy";
+    if (d === "medium") return "difficulty-badge medium";
+    if (d === "hard") return "difficulty-badge hard";
+
+    return "difficulty-badge";
   };
 
   return (
@@ -34,40 +42,42 @@ function Problems() {
       <Navbar />
 
       <div className="container">
-
         <h1>Coding Problems</h1>
 
-        {problems.map((problem) => (
+        <input
+          type="text"
+          placeholder="Search problems by title..."
+          className="search-input"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-          <div
-            key={problem.id}
-            className="card"
-          >
-
-            <h2>
-              {problem.title}
-            </h2>
-
-            <p>
-              <b>Difficulty:</b> {problem.difficulty}
-            </p>
-
-            <p>
-              {problem.description}
-            </p>
-
-            <Link
-              to={`/problems/${problem.id}`}
+        {filteredProblems.length > 0 ? (
+          filteredProblems.map((problem) => (
+            <div
+              key={problem.id}
+              className="card"
             >
-              <button className="btn">
-                Solve Problem
-              </button>
-            </Link>
+              <div className="problem-header">
+                <h2>{problem.title}</h2>
 
-          </div>
+                <span className={getDifficultyClass(problem.difficulty)}>
+                  {problem.difficulty}
+                </span>
+              </div>
 
-        ))}
+              <p>{problem.description}</p>
 
+              <Link to={`/problems/${problem.id}`}>
+                <button className="btn">
+                  Solve Problem
+                </button>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>No problems found.</p>
+        )}
       </div>
     </>
   );
