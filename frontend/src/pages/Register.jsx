@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../services/api";
 
-function Login() {
-
+function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
+    username: "",
     email: "",
     password: ""
   });
@@ -19,49 +19,43 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
+      await API.post("/auth/register", form);
 
-      const res = await API.post(
-        "/auth/login",
-        form
-      );
+      alert("Registration Successful");
 
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
-
-      alert("Login Successful");
-
-      navigate("/problems");
-
+      navigate("/");
     } catch (err) {
-
       alert(
         err.response?.data?.message ||
-        "Login Failed"
+        "Registration Failed"
       );
-
     }
-
   };
 
   return (
-
     <div className="auth-card">
-
-      <h1>Login</h1>
+      <h1>Register</h1>
 
       <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleChange}
+          required
+        />
+
+        <br /><br />
 
         <input
           type="email"
           name="email"
           placeholder="Email"
           onChange={handleChange}
+          required
         />
 
         <br /><br />
@@ -71,29 +65,23 @@ function Login() {
           name="password"
           placeholder="Password"
           onChange={handleChange}
+          required
         />
 
         <br /><br />
 
-        <button
-          className="btn"
-          type="submit"
-        >
-          Login
+        <button className="btn" type="submit">
+          Register
         </button>
-
       </form>
 
       <br />
 
-      <Link to="/register">
-        New User? Register
+      <Link to="/">
+        Already have an account? Login
       </Link>
-
     </div>
-
   );
-
 }
 
-export default Login;
+export default Register;
