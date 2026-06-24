@@ -1,58 +1,77 @@
 #  Online Judge Platform
 
-A full-stack coding platform where users can register, solve programming problems, submit solutions, and track their submission history.
+A full-stack coding platform that allows users to register, solve coding problems, submit solutions, and track their submission history. The platform provides authentication, problem management, submission tracking, search functionality, difficulty classification, and cloud deployment.
+
+---
 
 ##  Live Demo
 
-**Frontend:**
+### Frontend (Vercel)
+
 https://online-judge-platform-65qgyk9th-ritesh-gupta.vercel.app/
 
-**Backend:**
+### Backend (Railway)
+
 https://online-judge-platform-production.up.railway.app/
 
-**GitHub Repository:**
+### Source Code
+
 https://github.com/ritesh30gupta06/online-judge-platform
 
 ---
 
 #  Features
 
-* Secure User Registration & Login
+## Authentication
+
+* User Registration
+* User Login
 * JWT Authentication
 * Protected Routes
-* Problem Management System
+
+## Problem Management
+
 * 50 Coding Problems
-* Search Functionality
-* Difficulty Levels (Easy, Medium, Hard)
+* Easy, Medium, Hard Classification
 * Tag-Based Categorization
-* Code Submission Tracking
+* Problem Details Page
+* Search Functionality
+
+## Submission System
+
+* Code Submission
+* Verdict Generation
 * User-Specific Submission History
-* Responsive User Interface
-* Cloud Deployment
+
+## Deployment
+
+* Frontend Hosted on Vercel
+* Backend Hosted on Railway
+* MySQL Database Hosted on Railway
 
 ---
 
 #  Tech Stack
 
-## Frontend
+### Frontend
 
 * React.js
 * React Router DOM
 * Axios
 * CSS
 
-## Backend
+### Backend
 
 * Node.js
 * Express.js
 * JWT Authentication
 * REST APIs
 
-## Database
+### Database
 
 * MySQL
 
-## Deployment
+### Cloud Platforms
 
 * Vercel
 * Railway
@@ -93,68 +112,114 @@ https://github.com/ritesh30gupta06/online-judge-platform
 
 ## Submission History
 
-![Submissions](screenshots/submissions.png)
+![Submission History](screenshots/submissions.png)
 
 ---
 
-#  Key Functionalities
+## Railway Backend Deployment
 
-### Authentication
+![Railway Backend](screenshots/railway.png)
 
-* User Registration
-* User Login
-* JWT Token Generation
-* Protected API Routes
+---
 
-### Problem Management
+## Live Website Deployment
 
-* View Coding Problems
-* Difficulty Classification
-* Tag-Based Organization
-* Search Problems
+![Live Website](screenshots/deployed-site.png)
 
-### Submission System
+---
 
-* Submit Solutions
-* Verdict Generation
-* User-Specific Submission History
+#  Project Highlights
 
-### Deployment
-
-* Frontend Hosted on Vercel
-* Backend Hosted on Railway
-* MySQL Database Hosted on Railway
+* Built a complete full-stack coding platform from scratch.
+* Implemented secure JWT-based authentication.
+* Developed RESTful APIs using Express.js.
+* Designed MySQL database schema for users, problems, and submissions.
+* Created user-specific submission history functionality.
+* Integrated search functionality for coding problems.
+* Added difficulty badges and tag-based classification.
+* Deployed frontend, backend, and database on cloud platforms.
+* Managed 50 coding challenges with structured problem organization.
 
 ---
 
 #  Database Schema
 
-## Users
+## Users Table
 
-* id
-* name
-* email
-* password
+| Column   |
+| -------- |
+| id       |
+| name     |
+| email    |
+| password |
 
-## Problems
+---
 
-* id
-* title
-* difficulty
-* description
-* sample_input
-* sample_output
-* tag
+## Problems Table
 
-## Submissions
+| Column        |
+| ------------- |
+| id            |
+| title         |
+| difficulty    |
+| description   |
+| sample_input  |
+| sample_output |
+| expected_code |
+| tag           |
+| created_at    |
 
-* id
-* user_id
-* problem_id
-* language
-* code
-* verdict
-* submitted_at
+---
+
+## Submissions Table
+
+| Column       |
+| ------------ |
+| id           |
+| user_id      |
+| problem_id   |
+| code         |
+| language     |
+| verdict      |
+| submitted_at |
+
+---
+
+#  Project Structure
+
+```text
+onlinejudge
+│
+├── backend
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── routes
+│   ├── server.js
+│   └── package.json
+│
+├── frontend
+│   ├── src
+│   │   ├── pages
+│   │   ├── components
+│   │   ├── services
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   └── package.json
+│
+├── screenshots
+│   ├── login.png
+│   ├── register.png
+│   ├── problems.png
+│   ├── problem-details.png
+│   ├── submit-solution.png
+│   ├── submissions.png
+│   ├── railway.png
+│   └── deployed-site.png
+│
+└── README.md
+```
 
 ---
 
@@ -192,61 +257,30 @@ npm run dev
 
 ---
 
-#  Project Structure
+#  Deployment
 
-```text
-onlinejudge
-│
-├── backend
-│   ├── config
-│   ├── controllers
-│   ├── middleware
-│   ├── routes
-│   └── server.js
-│
-├── frontend
-│   ├── src
-│   │   ├── pages
-│   │   ├── components
-│   │   ├── services
-│   │   └── App.jsx
-│
-├── screenshots
-│
-└── README.md
-```
+### Frontend
+
+Deployed using Vercel.
+
+### Backend
+
+Deployed using Railway.
+
+### Database
+
+MySQL Database hosted on Railway.
 
 ---
 
-#  Future Improvements
-
-* Real Code Execution Engine
-* Docker Sandbox Execution
-* Test Case Evaluation
-* Admin Dashboard
-* Contest System
-* Leaderboard
-* User Profiles
-
----
-
-#  Resume Highlights
-
-* Developed a full-stack Online Judge platform using React, Node.js, Express, and MySQL.
-* Implemented JWT-based authentication and protected API routes.
-* Built RESTful APIs for coding problems and submission management.
-* Designed a user-specific submission tracking system.
-* Deployed frontend on Vercel and backend/database on Railway cloud infrastructure.
-* Integrated 50 coding challenges with search, difficulty classification, and tag-based organization.
-
----
 
 #  Author
 
-**Ritesh Gupta**
+### Ritesh Gupta
 
-GitHub: https://github.com/ritesh30gupta06
+GitHub:
+https://github.com/ritesh30gupta06
 
 ---
 
- If you found this project useful, consider giving it a star on GitHub.
+⭐ If you found this project useful, consider giving it a star on GitHub.
